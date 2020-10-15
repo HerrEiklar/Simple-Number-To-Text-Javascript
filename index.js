@@ -69,7 +69,7 @@ dictionaryNumbers = (param) => {
         23: "Centillion"
     }
     const _r = _var[param]
-    if (!_r) return "";
+    if (!_r) return null;
     return _r
 }
 
@@ -103,11 +103,14 @@ gtftdn = (param) => {
                 number = number.slice(0, (number.length >= 3 ? number.length - 3 : 0))
             } while (number.length > 0)
 
+            if (!dictionaryNumbers(packs.length)) throw Error("number is to big - more than Centillion")
+
             for (var i = packs.length; i > 0; i--) {
                 const pack = packs[i - 1].toString()
                 // might needs improvment - as of not yet existing Standard dictionary numbers
                 // check by dictionaryNumbers() - if it returns a empty string, we know that we don't need to format it differently
-                text += `${gtftdn(pack)} ${dictionaryNumbers(i)} `
+                if (i < 2) text += `${gtftdn(pack)}`
+                else text += `${gtftdn(pack)} ${dictionaryNumbers(i)} `
             }
 
             // little bit of formatting
