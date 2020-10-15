@@ -1,8 +1,5 @@
 # Dictionary Numbers To Text Converter
 
-## Try now:
-<input type="text” onclick="run()" />
-
 This works everywhere!
 Even in your browser!
 
