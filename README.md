@@ -3,7 +3,7 @@
 This works everywhere!
 Even in your browser!
 
-![Use in Brave Browser](docs/assets/images/useInBrowser.PNG?raw=true "Brave")
+![Use in Brave Browser](docs/assets/images/useInBrowser.PNG?raw=true "Using index.js's code in braves console, it works!")
 
 ## Description
 
