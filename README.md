@@ -1,4 +1,4 @@
-# Number to text
+# Dictionary Numbers To Text Converter
 
 This works everywhere!
 Even in your browser!
