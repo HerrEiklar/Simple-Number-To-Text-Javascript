@@ -3,7 +3,7 @@
 This works everywhere!
 Even in your browser!
 
-![blob/83ad77439fb7a20ae6be2d25d647505440614a2c/docs/assets/images/useInBrowser.PNG?raw=true]
+![Use in Brave Browser](blob/83ad77439fb7a20ae6be2d25d647505440614a2c/docs/assets/images/useInBrowser.PNG?raw=true)
 
 ## Description
 
