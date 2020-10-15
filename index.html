@@ -127,7 +127,7 @@
         }
 
         function run() {
-            const input = document.getElementById('output').innerText
+            const input = document.getElementById('input').innerText
             const output = gtftdn();
             document.getElementById('output').value = JSON.stringify(output)
             console.log(output)
@@ -139,7 +139,7 @@
     <div>
         <h2>Try it out:</h2>
         <div>
-            <input type="text" value="1234" />
+            <input id="input" type="text" value="1234" />
             <textarea id="output" placeholder="Output..."></textarea>
             <input id="run" type="button" value="Run" onclick="run();" />
         </div>
