@@ -1,6 +1,7 @@
 'strict';
 
-staticNum = (param) => {
+// all the needed digits
+numbers = (param) => {
     const _var = {
         // single digits
         1: "One",
@@ -12,7 +13,7 @@ staticNum = (param) => {
         7: "Seven",
         8: "Eight",
         9: "Nine",
-        // digits that're written differently
+        // weird digits
         11: "Eleven",
         12: "Twelve",
         13: "Thirteen",
@@ -32,63 +33,54 @@ staticNum = (param) => {
         70: "Seventy",
         80: "Eighty",
         90: "Ninety",
-        // hundret is here instead of dictionaryNumbers
-        100: "Hundred"
+        100: "Hundred",
+        // large numbers - from wikipedia -> https://en.wikipedia.org/wiki/Names_of_large_numbers
+        1002: "Thousand",
+        1003: "Million",
+        1004: "Billion",
+        1005: "Trillion",
+        1006: "Quadrillion",
+        1007: "Quintillion",
+        1008: "Sextillion",
+        1009: "Septillion",
+        1010: "Octillion",
+        1011: "Nonillion",
+        1012: "Decillion",
+        1013: "Undecillion",
+        1014: "Duodecillion",
+        1015: "Tredecillion",
+        1016: "Quattuordecillion",
+        1017: "Quindecillion",
+        1018: "Sexdecillion",
+        1019: "Septendecillion",
+        1020: "Octodecillion",
+        1021: "Novemdecillion",
+        1022: "Vigintillion",
+        1023: "Centillion"
     }
     const _r = _var[param]
-    if (!_r) return "";
-    return _r
-};
-
-
-// 1 000 000 000 000 000
-dictionaryNumbers = (param) => {
-    const _var = {
-        // all dictionary numbers - from wikipedia -> https://en.wikipedia.org/wiki/Names_of_large_numbers
-        2: "Thousand",
-        3: "Million",
-        4: "Billion",
-        5: "Trillion",
-        6: "Quadrillion",
-        7: "Quintillion",
-        8: "Sextillion",
-        9: "Septillion",
-        10: "Octillion",
-        11: "Nonillion",
-        12: "Decillion",
-        13: "Undecillion",
-        14: "Duodecillion",
-        15: "Tredecillion",
-        16: "Quattuordecillion",
-        17: "Quindecillion",
-        18: "Sexdecillion",
-        19: "Septendecillion",
-        20: "Octodecillion",
-        21: "Novemdecillion",
-        22: "Vigintillion",
-        23: "Centillion"
-    }
-    const _r = _var[param]
-    if (!_r) return null;
+    if (!_r) return ""
     return _r
 }
 
-// getTextFromMaxThreeDigitNumber
-gtftdn = (param) => {
-    const lenght = (l) => param.toString().length == l;
+// calculate all the shit
+getText = (param) => {
+    param = BigInt(param.replaceAll(' ', ''))
 
-    if (lenght(1)) {
-        return staticNum(param)
+    const lengthEquals = (l) => param.toString().length == l
+
+    if (lengthEquals(1)) {
+        return numbers(param)
     }
 
-    else if (lenght(2)) {
-        let _tmp = staticNum(param)
+    else if (lengthEquals(2)) {
+        let _tmp = numbers(param)
         if (_tmp) return _tmp
-        return `${staticNum(param.toString()[0] + "0")} ${staticNum(param.toString()[1])}`
+        return `${numbers(param.toString()[0] + "0")} ${numbers(param.toString()[1])}`
     }
 
-    else if (lenght(3)) {
-        return `${staticNum(param.toString()[0])} ${staticNum(100)} ${gtftdn(param.toString().substr(1, 2))}`
+    else if (lengthEquals(3)) {
+        return `${numbers(param.toString()[0])} ${numbers(100)} ${getText(param.toString().substr(1, 2))}`
     }
 
     else {
@@ -103,14 +95,14 @@ gtftdn = (param) => {
                 number = number.slice(0, (number.length >= 3 ? number.length - 3 : 0))
             } while (number.length > 0)
 
-            if (!dictionaryNumbers(packs.length)) throw Error("number is to big - more than Centillion")
+            if (!numbers(packs.length+1000)) throw Error("number is to big - more than Centillion")
 
             for (var i = packs.length; i > 0; i--) {
                 const pack = packs[i - 1].toString()
                 // might needs improvment - as of not yet existing Standard dictionary numbers
-                // check by dictionaryNumbers() - if it returns a empty string, we know that we don't need to format it differently
-                if (i < 2) text += `${gtftdn(pack)}`
-                else text += `${gtftdn(pack)} ${dictionaryNumbers(i)} `
+                // check by numbers() - if it returns a empty string, we know that we don't need to format it differently
+                if (i < 2) text += `${getText(pack)}`
+                else text += `${getText(pack)} ${numbers(i+1000)} `
             }
 
             // little bit of formatting
@@ -124,4 +116,4 @@ gtftdn = (param) => {
     }
 }
 
-console.log(gtftdn("12345678901234567890"))
+console.table(getText("987654321"))
