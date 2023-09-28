@@ -4,7 +4,7 @@ This works everywhere!
 Even in your browser!
 
 ## Test Now:
-[Test it here](https://herreiklar.github.io/Dictionary-Numbers-To-Text/)
+[Test it here](https://hypnotist1148.github.io/dicttoj/)
 
 ![Use in Brave Browser](docs/assets/images/useInBrowser.PNG?raw=true "Using index.js's code in braves console, it works!")
 
